@@ -1,0 +1,2698 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SenAgroFood - Valorisation des produits locaux du Sénégal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & VARIABLES ===== */
+        :root {
+            --primary-color: #2E7D32; /* Vert naturel */
+            --secondary-color: #FFB300; /* Jaune doré */
+            --accent-color: #8D6E63; /* Brun terreux */
+            --light-color: #F9F7F2; /* Beige clair */
+            --dark-color: #1B5E20; /* Vert foncé */
+            --text-color: #333333;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: var(--dark-color);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--light-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        section {
+            padding: 5rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: var(--radius);
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.0rem 1.2rem;
+        }
+
+        /* ===== LOGO CIRCULAIRE ===== */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-circle {
+            position: relative;
+            width: 60px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 2px 8px rgba(46, 125, 50, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--white);
+        }
+
+        .logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20%;
+        }
+
+        .logo-icon {
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            border: 2px solid var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light-color);
+        }
+
+        /* Version responsive pour mobile */
+        @media (max-width: 768px) {
+            .logo-circle {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .logo-text {
+                font-size: 1.6rem;
+            }
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light-color);
+            display: flex;
+            align-items: center;
+        }
+
+       
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url('groupe2.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+        .SenAgroFood{
+            color: var(--primary-color);
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .hero .btn {
+            font-size: 1.1rem;
+            padding: 1rem 2.5rem;
+        }
+
+        /* ===== PRODUCTS SECTION ===== */
+        .products {
+            background-color: var(--light-color);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .product-price {
+            font-weight: 700;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .view-details {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            padding: 0.5rem 1.2rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .view-details:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .add-to-cart {
+            background-color: transparent;
+            color: var(--secondary-color);
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .add-to-cart:hover {
+            transform: scale(1.2);
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            text-align: left;
+        }
+
+        .about-text h2:after {
+            left: 0;
+            transform: none;
+        }
+
+        .about-points {
+            margin: 2rem 0;
+        }
+
+        .about-point {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .about-point i {
+            color: var(--primary-color);
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .about-img {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        /* ===== PROCESS SECTION ===== */
+        .process {
+            background-color: var(--light-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .process-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .step.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(46, 125, 50, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step-icon i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        .step h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* ===== GALLERY CAROUSEL SECTION ===== */
+        .gallery {
+            background-color: var(--white);
+            padding: 5rem 1.5rem;
+            overflow: hidden;
+        }
+
+        .gallery-carousel {
+            position: relative;
+            max-width: 600px;
+            margin: 2rem auto 0;
+            padding: 0 60px;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            height: 400px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.8s ease-in-out; /* Transition plus lente */
+            height: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius);
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: var(--white);
+            padding: 2.5rem;
+            border-radius: 0 0 var(--radius) var(--radius);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.8s ease-in-out 0.3s;
+        }
+
+        .carousel-slide.active .carousel-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .carousel-overlay h4 {
+            color: var(--white);
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+        }
+
+        .carousel-overlay p {
+            color: rgba(255, 255, 255, 0.95);
+            margin: 0;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .carousel-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            padding: 0 10px;
+        }
+
+        .carousel-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--dark-color);
+            transform: scale(1.1);
+        }
+
+        .carousel-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .carousel-btn i {
+            font-size: 1.2rem;
+        }
+
+        .carousel-counter {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 0 1rem;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 1.5rem;
+        }
+
+        .carousel-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: #ddd;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .carousel-dot:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.2);
+        }
+
+        .carousel-dot.active {
+            background-color: var(--primary-color);
+            transform: scale(1.3);
+        }
+
+        .carousel-dot.active::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        /* ===== TESTIMONIALS CAROUSEL SECTION ===== */
+        .testimonials {
+            background-color: var(--light-color);
+            padding: 5rem 1.5rem;
+            overflow: hidden;
+        }
+
+        .testimonials-carousel {
+            position: relative;
+            max-width: 900px;
+            margin: 2rem auto 0;
+            padding: 0 60px;
+        }
+
+        .testimonials-container {
+            overflow: hidden;
+            border-radius: var(--radius);
+            padding: 20px 0;
+        }
+
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            min-width: 100%;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            opacity: 0.7;
+            transform: scale(0.95);
+            transition: all 0.8s ease-in-out;
+        }
+
+        .testimonial-card.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .client-avatar {
+            width: 80px;
+            height: 80px;
+            background-color: var(--light-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 2rem;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .client-avatar i {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+        }
+
+        .client-info h4 {
+            margin-bottom: 0.8rem;
+            color: var(--dark-color);
+            font-size: 1.4rem;
+        }
+
+        .client-rating {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
+        .client-rating i {
+            margin-right: 0.3rem;
+        }
+
+        .testimonial-body {
+            flex-grow: 1;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-body p {
+            font-style: italic;
+            color: var(--text-color);
+            line-height: 1.8;
+            font-size: 1.2rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .testimonial-body p::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-footer {
+            border-top: 2px solid #f0f0f0;
+            padding-top: 1.5rem;
+            font-size: 1rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .testimonial-footer i {
+            margin-right: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .testimonials-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* Animation pour l'entrée des slides */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .carousel-slide.active {
+            animation: slideIn 0.8s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .carousel-container {
+                height: 450px;
+            }
+            
+            .testimonial-card {
+                padding: 2.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .carousel-container {
+                height: 400px;
+            }
+            
+            .carousel-overlay {
+                padding: 2rem;
+            }
+            
+            .carousel-overlay h4 {
+                font-size: 1.3rem;
+            }
+            
+            .carousel-overlay p {
+                font-size: 1rem;
+            }
+            
+            .testimonial-card {
+                padding: 2rem;
+            }
+            
+            .client-avatar {
+                width: 70px;
+                height: 70px;
+                margin-right: 1.5rem;
+            }
+            
+            .client-avatar i {
+                font-size: 3rem;
+            }
+            
+            .client-info h4 {
+                font-size: 1.3rem;
+            }
+            
+            .testimonial-body p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-carousel,
+            .testimonials-carousel {
+                padding: 0 30px;
+            }
+            
+            .carousel-container {
+                height: 350px;
+            }
+            
+            .carousel-overlay {
+                padding: 1.5rem;
+            }
+            
+            .carousel-overlay h4 {
+                font-size: 1.2rem;
+            }
+            
+            .carousel-overlay p {
+                font-size: 0.95rem;
+            }
+            
+            .carousel-btn {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .carousel-counter {
+                font-size: 1.1rem;
+            }
+            
+            .testimonial-card {
+                padding: 1.8rem;
+            }
+            
+            .client-avatar {
+                width: 60px;
+                height: 60px;
+                margin-right: 1.2rem;
+            }
+            
+            .client-avatar i {
+                font-size: 2.5rem;
+            }
+            
+            .client-info h4 {
+                font-size: 1.2rem;
+            }
+            
+            .testimonial-body p {
+                font-size: 1rem;
+                padding-left: 1.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-carousel,
+            .testimonials-carousel {
+                padding: 0 15px;
+            }
+            
+            .carousel-container {
+                height: 300px;
+            }
+            
+            .carousel-overlay {
+                padding: 1.2rem;
+            }
+            
+            .carousel-overlay h4 {
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .carousel-overlay p {
+                font-size: 0.9rem;
+            }
+            
+            .carousel-controls {
+                margin-top: 1rem;
+            }
+            
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .carousel-counter {
+                font-size: 1rem;
+                padding: 0 0.5rem;
+            }
+            
+            .carousel-dots {
+                gap: 8px;
+                margin-top: 1rem;
+            }
+            
+            .carousel-dot {
+                width: 12px;
+                height: 12px;
+            }
+            
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+            
+            .client-avatar {
+                width: 50px;
+                height: 50px;
+                margin-right: 1rem;
+            }
+            
+            .client-avatar i {
+                font-size: 2rem;
+            }
+            
+            .testimonial-header {
+                margin-bottom: 1.5rem;
+            }
+            
+            .testimonial-body {
+                margin-bottom: 1.5rem;
+            }
+            
+            .testimonial-body p {
+                font-size: 0.95rem;
+                padding-left: 1rem;
+            }
+            
+            .testimonial-footer {
+                padding-top: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h2 {
+            text-align: left;
+        }
+
+        .contact-info h2:after {
+            left: 0;
+            transform: none;
+        }
+
+        .contact-details {
+            margin: 2rem 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            color: var(--primary-color);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            margin-top: 0.3rem;
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            margin-right: 1rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px);
+        }
+
+        .map-container {
+            height: 350px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+
+        .contact-form {
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: var(--radius);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: rgba(46, 125, 50, 0.1);
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            display: block;
+        }
+
+        .form-message.error {
+            background-color: rgba(211, 47, 47, 0.1);
+            color: #d32f2f;
+            border: 1px solid #d32f2f;
+            display: block;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 4rem 1.5rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .footer-social {
+            display: flex;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50%;
+            margin-right: 1rem;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            max-width: 800px;
+            width: 100%;
+            overflow: hidden;
+            animation: slideUp 0.4s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 1.5rem 2rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            color: var(--white);
+            margin: 0;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.8rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-body {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .modal-img {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .modal-info h4 {
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        .modal-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .modal-description {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-features {
+            margin-bottom: 2rem;
+        }
+
+        .modal-features li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .modal-features i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+
+        /* ===== MINI CART ===== */
+        .mini-cart {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .mini-cart:hover {
+            background-color: var(--dark-color);
+            transform: scale(1.1);
+        }
+
+        .mini-cart i {
+            font-size: 1.5rem;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 4rem 1rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .nav-links li {
+                margin: 0 0 1.5rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero {
+                min-height: 600px;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .modal-body {
+                padding: 1.5rem;
+            }
+        }
+        /* Bouton hamburger - CORRECTION */
+        .burger {
+            display: none; /* Caché sur desktop */
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--white); /* Changé de var(--light-color) à var(--white) */
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            z-index: 1001;
+            transition: color 0.3s ease;
+        }
+
+        .burger:hover {
+            color: var(--secondary-color); /* Changé pour mieux contraster */
+        }
+
+        /* Responsive - afficher le bouton hamburger sur mobile */
+        @media (max-width: 768px) {
+            .burger {
+                display: block; /* Visible sur mobile */
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 50%;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden; /* IMPORTANT: ajouter cette ligne */
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible; /* IMPORTANT: ajouter cette ligne */
+            }
+            
+            .nav-links li {
+                margin: 0 0 1.5rem 0;
+            }
+            
+            .nav-links a {
+                color: var(--text-color); /* S'assurer que les liens sont visibles */
+                font-size: 1.2rem;
+                padding: 0.5rem 1rem;
+            }
+            
+            .nav-links a:hover {
+                color: var(--primary-color);
+            }
+        }
+
+        /* Sur desktop, cacher complètement le burger */
+        @media (min-width: 769px) {
+            .burger {
+                display: none !important; /* Forcer à cacher */
+            }
+            
+            .nav-links {
+                display: flex !important; /* Forcer à afficher */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-circle">
+                    <img src="logo.jpg" alt="Logo SenAgroFood">
+                </div>
+                <span class="logo-text">SenAgroFood</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#produits">Produits</a></li>
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#processus">Processus</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                
+                <button class="burger" id="burger" aria-label="Menu de navigation" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <h1>Bienvenue Chez <span class="SenAgroFood">SenAgroFood</span></h1>
+            <p>Biscuits de mangue, sirops naturels, confitures et bien plus... Découvrez l'authenticité et la qualité des produits transformés localement à Thiès, Thiénaba.</p>
+            <a href="#produits" class="btn">Découvrir nos produits</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="produits">
+        <div class="container">
+            <h2>Nos Produits</h2>
+            <p class="section-intro">Découvrez notre gamme de produits locaux transformés avec soin, respectant les traditions et la qualité sénégalaise.</p>
+            
+            <div class="products-grid" id="productsGrid">
+                <!-- Produits générés dynamiquement en JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="apropos">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>À propos de SenAgroFood</h2>
+                    <p>Fondée à Thiès, Thiénaba, SenAgroFood est une entreprise agroalimentaire spécialisée dans la transformation des produits locaux du Sénégal. Notre mission est de valoriser les richesses agricoles de notre terroir tout en créant de la valeur ajoutée et des emplois locaux.</p>
+                    
+                    <div class="about-points">
+                        <div class="about-point">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>100% Local</h4>
+                                <p>Nous travaillons exclusivement avec des producteurs locaux pour soutenir l'économie régionale.</p>
+                            </div>
+                        </div>
+                        <div class="about-point">
+                            <i class="fas fa-award"></i>
+                            <div>
+                                <h4>Qualité Certifiée</h4>
+                                <p>Tous nos produits respectent les normes d'hygiène et de qualité les plus strictes.</p>
+                            </div>
+                        </div>
+                        <div class="about-point">
+                            <i class="fas fa-industry"></i>
+                            <div>
+                                <h4>Production artisanale et industrielle</h4>
+                                <p>Nous combinons savoir-faire traditionnel et technologies modernes pour des produits d'exception.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn">Nous contacter</a>
+                </div>
+                
+                <div class="about-img">
+                    <img src="attestaion.jpg" alt="Transformation de produits locaux au Sénégal">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section Collection Photos avec Carrousel -->
+    <section class="gallery" id="galerie">
+        <div class="container">
+            <h2>Notre Collection Photos</h2>
+            <p class="section-intro">Découvrez en images notre processus de transformation, nos installations et nos produits finis.</p>
+            
+            <div class="gallery-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Images seront ajoutées dynamiquement -->
+                    </div>
+                </div>
+                
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-counter">
+                        <span id="currentSlide">1</span> / <span id="totalSlides">6</span>
+                    </div>
+                    <button class="carousel-btn next-btn" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <div class="carousel-dots" id="carouselDots">
+                    <!-- Les points seront ajoutés dynamiquement -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="processus">
+        <div class="container process-container">
+            <h2>Notre Processus de Transformation</h2>
+            <p class="section-intro">De la récolte à la distribution, nous assurons un processus rigoureux pour garantir la qualité et l'authenticité de nos produits.</p>
+            
+            <div class="process-steps">
+                <div class="step fade-in">
+                    <div class="step-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Récolte</h3>
+                    <p>Sélection rigoureuse des fruits et céréales auprès de nos producteurs partenaires de la région de Thiès.</p>
+                </div>
+                
+                <div class="step fade-in">
+                    <div class="step-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Transformation</h3>
+                    <p>Processus de transformation respectueux des saveurs naturelles, combinant méthodes traditionnelles et équipements modernes.</p>
+                </div>
+                
+                <div class="step fade-in">
+                    <div class="step-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>Conditionnement</h3>
+                    <p>Emballage adapté pour préserver la fraîcheur et la qualité des produits, avec un design attrayant.</p>
+                </div>
+                
+                <div class="step fade-in">
+                    <div class="step-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Distribution</h3>
+                    <p>Livraison dans tout le Sénégal et à l'international pour partager les saveurs de notre terroir.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Avis Clients avec Carrousel -->
+    <section class="testimonials" id="avis">
+        <div class="container">
+            <h2>Avis de Nos Clients</h2>
+            <p class="section-intro">Découvrez ce que nos clients pensent de la qualité de nos produits locaux.</p>
+            
+            <div class="testimonials-carousel">
+                <div class="testimonials-container">
+                    <div class="testimonials-track" id="testimonialsTrack">
+                        <!-- Avis seront ajoutés dynamiquement -->
+                    </div>
+                </div>
+                
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-testimonial" id="prevTestimonial">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-counter">
+                        <span id="currentTestimonial">1</span> / <span id="totalTestimonials">6</span>
+                    </div>
+                    <button class="carousel-btn next-testimonial" id="nextTestimonial">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="testimonials-cta">
+                <a href="#contact" class="btn">Laissez votre avis</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Localisation & Contact</h2>
+            <p class="section-intro">Contactez-nous pour découvrir nos produits ou pour toute demande de partenariat.</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Notre Adresse</h2>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Siège Social</h4>
+                                <p>Thiès, Thiénaba, Sénégal</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Téléphone</h4>
+                                <p>+221 77 888 39 47</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <p>+221 77 888 39 47</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>contact@senagrofood.sn</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.016153960551!2d-16.78170772471361!3d14.717543685746164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec1735e8d03c203%3A0x8964270da2e2b50e!2sThi%C3%A8s%2C%20Senegal!5e0!3m2!1sen!2sfr!4v1684512345678!5m2!1sen!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Carte de localisation de SenAgroFood à Thiès"></iframe>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Envoyez-nous un message</h3>
+                    <form id="contactForm">
+                        <div id="formMessage" class="form-message"></div>
+                        
+                        <div class="form-group">
+                            <label for="name">Nom complet *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Adresse email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>SenAgroFood</h3>
+                    <p>Entreprise agroalimentaire spécialisée dans la transformation des produits locaux du Sénégal. Qualité, authenticité et innovation.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Liens rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#produits">Produits</a></li>
+                        <li><a href="#apropos">À propos</a></li>
+                        <li><a href="#processus">Processus</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Horaires d'ouverture</h3>
+                    <ul class="footer-links">
+                        <li><strong>Lundi - Vendredi:</strong> 8h - 18h</li>
+                        <li><strong>Samedi:</strong> 9h - 16h</li>
+                        <li><strong>Dimanche:</strong> Fermé</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Thiénaba, Thiès, Sénégal</li>
+                        <li><i class="fas fa-phone"></i> +221 77 888 39 47</li>
+                        <li><i class="fas fa-envelope"></i> contact@senagrofood.sn</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 SenAgroFood. Tous droits réservés. | Mentions légales | Politique de confidentialité</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Détails du produit</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Contenu du modal généré dynamiquement -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Mini Cart -->
+    <div class="mini-cart" id="miniCart">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+    </div>
+
+    <script>
+        // ===== DONNÉES DES PRODUITS =====
+const products = [
+    {
+        id: 1,
+        name: "Biscuits de Mangue",
+        price: "2 500 FCFA",
+        description: "Biscuits croustillants préparés avec de la farine de mil et des morceaux de mangue séchée. Un goût fruité et naturel.",
+        image: "buscuitmangue.jpg",
+        features: ["100% naturel", "Sans conservateurs", "Riche en fibres", "Emballage écologique"]
+    },
+    {
+        id: 2,
+        name: "Confiture de mangue",
+        price: "3 500 FCFA",
+        description: "Confiture naturelle de mangue, riche en vitamines C et antioxydants. Idéale pour le petit déjeuner.",
+        image: "confiture.jpg",
+        features: ["100% naturel", "Riche en vitamine C", "Sans colorants artificiels", "Production locale"]
+    },
+    {
+        id: 3,
+        name: "Thiakry de Papaye",
+        price: "2 800 FCFA",
+        description: "Dessert traditionnel à base de céréales et de papaye, riche en fibres et en énergie.",
+        image: "ThiakryPapaye.jpg",
+        features: ["Sans additifs", "Faible teneur en sucre", "Arôme naturel", "Pot en verre recyclable"]
+    },
+    {
+        id: 4,
+        name: "Thiere Mangue",
+        price: "1 800 FCFA",
+        description: "Couscous traditionnel enrichi à la mangue, parfumé et nutritif pour des repas équilibrés.",
+        image: "thieremangue.jpg",
+        features: ["Sans gluten", "Riche en protéines", "Production locale", "Emballage biodégradable"]
+    },
+    {
+        id: 5,
+        name: "Buscuits variés",
+        price: "2 000 FCFA",
+        description: "Assortiment de biscuits à base de farines locales et de fruits séchés.",
+        image: "buicuits.jpg",
+        features: ["100% pur jus", "Sans conservateurs", "Riche en antioxydants", "Bouteille en verre"]
+    },
+    {
+        id: 6,
+        name: "Mangues séchées",
+        price: "3 000 FCFA",
+        description: "Mangues locales séchées naturellement pour un encas sain et énergétique.",
+        image: "mague.jpg",
+        features: ["100% fruits", "Sans sucre ajouté", "Riche en fibres", "Emballage refermable"]
+    }
+];
+
+// ===== VARIABLES GLOBALES =====
+let cart = JSON.parse(localStorage.getItem('senagrofood_cart')) || [];
+
+// ===== INITIALISATION DU SITE =====
+document.addEventListener('DOMContentLoaded', function() {
+    // Générer les produits
+    generateProducts();
+    
+    // Initialiser le compteur du panier
+    updateCartCount();
+    
+    // Initialiser les animations au scroll
+    initScrollAnimations();
+    
+    // Initialiser les événements
+    initEvents();
+});
+
+// ===== FONCTIONS =====
+
+// Générer les produits dans la grille
+function generateProducts() {
+    const productsGrid = document.getElementById('productsGrid');
+    
+    products.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card fade-in';
+        productCard.innerHTML = `
+            <div class="product-img">
+                <img src="${product.image}" alt="${product.name}" loading="lazy">
+            </div>
+            <div class="product-info">
+                <h3>${product.name}</h3>
+                <div class="product-price">${product.price}</div>
+                <p class="product-description">${product.description}</p>
+                <div class="product-actions">
+                    <button class="view-details" data-id="${product.id}">Voir détails</button>
+                    <button class="add-to-cart" data-id="${product.id}" aria-label="Ajouter au panier">
+                        <i class="fas fa-cart-plus"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        productsGrid.appendChild(productCard);
+    });
+    
+    // Animer les produits après un léger délai
+    setTimeout(() => {
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('show');
+            }, index * 100);
+        });
+    }, 300);
+}
+
+// Initialiser les animations au scroll
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, observerOptions);
+    
+    // Observer les éléments avec classe 'fade-in'
+    document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+    });
+    
+    // Observer les étapes du processus
+    document.querySelectorAll('.step').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// Initialiser les événements
+function initEvents() {
+    // Menu burger
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+
+    if (burger && navLinks) {
+        burger.addEventListener('click', () => {
+            const isExpanded = burger.getAttribute('aria-expanded') === 'true';
+            burger.setAttribute('aria-expanded', !isExpanded);
+            
+            navLinks.classList.toggle('active');
+            burger.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Fermer le menu au clic sur un lien
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                burger.innerHTML = '<i class="fas fa-bars"></i>';
+                burger.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+    
+    // Header sticky avec effet de réduction
+    window.addEventListener('scroll', () => {
+        const header = document.getElementById('header');
+        if (window.scrollY > 100) {
+            header.style.padding = '0';
+            header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+        } else {
+            header.style.padding = '';
+            header.style.boxShadow = '';
+        }
+    });
+    
+    // Gérer les clics sur "Voir détails"
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('view-details') || e.target.closest('.view-details')) {
+            const button = e.target.classList.contains('view-details') ? e.target : e.target.closest('.view-details');
+            const productId = parseInt(button.getAttribute('data-id'));
+            openProductModal(productId);
+        }
+        
+        // Gérer les clics sur "Ajouter au panier"
+        if (e.target.classList.contains('add-to-cart') || e.target.closest('.add-to-cart')) {
+            const button = e.target.classList.contains('add-to-cart') ? e.target : e.target.closest('.add-to-cart');
+            const productId = parseInt(button.getAttribute('data-id'));
+            addToCart(productId);
+        }
+    });
+    
+    // Gérer la fermeture du modal
+    const closeModalBtn = document.getElementById('closeModal');
+    const modal = document.getElementById('productModal');
+    
+    if (closeModalBtn && modal) {
+        closeModalBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+        
+        // Fermer le modal en cliquant à l'extérieur
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
+    
+    // Gérer le formulaire de contact
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', handleContactForm);
+    }
+    
+    // Gérer le mini-panier
+    const miniCart = document.getElementById('miniCart');
+    if (miniCart) {
+        miniCart.addEventListener('click', () => {
+            alert(`Votre panier contient ${cart.length} produit(s).\n\nFonctionnalité de paiement en développement.`);
+        });
+    }
+}
+
+// Ouvrir le modal produit
+function openProductModal(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    
+    const modal = document.getElementById('productModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    
+    if (!modal || !modalTitle || !modalBody) return;
+    
+    modalTitle.textContent = product.name;
+    
+    modalBody.innerHTML = `
+        <div class="modal-img">
+            <img src="${product.image}" alt="${product.name}">
+        </div>
+        <div class="modal-info">
+            <h4>${product.name}</h4>
+            <div class="modal-price">${product.price}</div>
+            <p class="modal-description">${product.description}</p>
+            
+            <h4>Caractéristiques</h4>
+            <ul class="modal-features">
+                ${product.features.map(feature => `<li><i class="fas fa-check"></i> ${feature}</li>`).join('')}
+            </ul>
+            
+            <button class="btn add-to-cart-modal" data-id="${product.id}">
+                <i class="fas fa-cart-plus"></i> Ajouter au panier
+            </button>
+        </div>
+    `;
+    
+    modal.style.display = 'flex';
+    
+    // Ajouter l'événement pour le bouton "Ajouter au panier" dans le modal
+    const addToCartBtn = modal.querySelector('.add-to-cart-modal');
+    if (addToCartBtn) {
+        addToCartBtn.addEventListener('click', () => {
+            addToCart(productId);
+            modal.style.display = 'none';
+        });
+    }
+}
+
+// Ajouter un produit au panier
+function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    
+    // Vérifier si le produit est déjà dans le panier
+    const existingItem = cart.find(item => item.id === productId);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            quantity: 1
+        });
+    }
+    
+    // Mettre à jour le localStorage
+    localStorage.setItem('senagrofood_cart', JSON.stringify(cart));
+    
+    // Mettre à jour le compteur du panier
+    updateCartCount();
+    
+    // Afficher une confirmation
+    showNotification(`${product.name} a été ajouté au panier`, 'success');
+}
+
+// Mettre à jour le compteur du panier
+function updateCartCount() {
+    const cartCount = document.getElementById('cartCount');
+    if (!cartCount) return;
+    
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    cartCount.textContent = totalItems;
+    
+    // Animation du compteur
+    if (totalItems > 0) {
+        cartCount.style.transform = 'scale(1.2)';
+        setTimeout(() => {
+            cartCount.style.transform = 'scale(1)';
+        }, 300);
+    }
+}
+
+// Gérer le formulaire de contact
+function handleContactForm(e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    const formMessage = document.getElementById('formMessage');
+    if (!formMessage) return;
+    
+    // Validation basique
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    
+    if (!name || !email || !message) {
+        showFormMessage('Veuillez remplir tous les champs obligatoires.', 'error');
+        return;
+    }
+    
+    // Simuler l'envoi du formulaire
+    showFormMessage('Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.', 'success');
+    
+    // Réinitialiser le formulaire après 3 secondes
+    setTimeout(() => {
+        form.reset();
+        formMessage.className = 'form-message';
+        formMessage.style.display = 'none';
+    }, 3000);
+}
+
+// Afficher un message dans le formulaire
+function showFormMessage(text, type) {
+    const formMessage = document.getElementById('formMessage');
+    if (!formMessage) return;
+    
+    formMessage.textContent = text;
+    formMessage.className = `form-message ${type}`;
+    formMessage.style.display = 'block';
+    
+    // Faire défiler jusqu'au message
+    formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// Afficher une notification
+function showNotification(message, type) {
+    // Créer l'élément de notification
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        <p>${message}</p>
+        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+    `;
+    
+    // Style de la notification
+    notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background-color: ${type === 'success' ? '#4CAF50' : '#f44336'};
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 9999;
+        animation: slideIn 0.3s ease;
+        max-width: 350px;
+    `;
+    
+    // Ajouter au body
+    document.body.appendChild(notification);
+    
+    // Supprimer après 3 secondes
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
+    
+    // Ajouter l'animation CSS pour la notification
+    if (!document.getElementById('notification-styles')) {
+        const style = document.createElement('style');
+        style.id = 'notification-styles';
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+// ===== DONNÉES POUR LES CARROUSELS =====
+const galleryImages = [
+    {
+        src: "biscutmangue2.jpg",
+        title: "Atelier de Production",
+        description: "Notre espace de transformation moderne et hygiénique"
+    },
+    {
+        src: "membre.jpg",
+        title: "Notre Équipe",
+        description: "Des professionnels passionnés par les produits locaux"
+    },
+    {
+        src: "ThiakryPapaye.jpg",
+        title: "Matières Premières",
+        description: "Sélection rigoureuse des fruits et céréales locales"
+    },
+    {
+        src: "thieremangue.jpg",
+        title: "Conditionnement",
+        description: "Emballage soigné pour préserver la qualité"
+    },
+    {
+        src: "thiakryPP.jpg",
+        title: "Exposition",
+        description: "Nos produits présentés avec soin"
+    },
+    {
+        src: "trravail.jpg",
+        title: "Distribution",
+        description: "Préparation des commandes pour nos clients"
+    }
+];
+
+const testimonials = [
+    {
+        name: "Aminata Diallo",
+        rating: 5,
+        text: "Les biscuits de mangue sont exceptionnels ! Le goût est naturel et authentique. J'en achète régulièrement pour ma famille.",
+        date: "15 Mars 2024"
+    },
+    {
+        name: "Moussa Ndiaye",
+        rating: 4.5,
+        text: "La confiture de bissap est délicieuse, pas trop sucrée avec un bel équilibre d'acidité. Un vrai produit du terroir !",
+        date: "28 Février 2024"
+    },
+    {
+        name: "Fatou Bâ",
+        rating: 5,
+        text: "Je commande régulièrement la farine de mil pour mes enfants. Sans gluten et très nutritive, parfaite pour leur croissance.",
+        date: "10 Janvier 2024"
+    },
+    {
+        name: "Ibrahima Sarr",
+        rating: 5,
+        text: "Excellente initiative de valoriser nos produits locaux ! La qualité est au rendez-vous et le service client est impeccable.",
+        date: "5 Décembre 2023"
+    }
+];
+
+// ===== CARROUSEL GALERIE =====
+let currentGallerySlide = 0;
+let galleryInterval;
+let isGalleryAnimating = false;
+
+function initGalleryCarousel() {
+    const track = document.getElementById('carouselTrack');
+    const dotsContainer = document.getElementById('carouselDots');
+    const currentSlideSpan = document.getElementById('currentSlide');
+    const totalSlidesSpan = document.getElementById('totalSlides');
+    
+    if (!track || !dotsContainer) return;
+    
+    // Mettre à jour le compteur total
+    if (totalSlidesSpan) {
+        totalSlidesSpan.textContent = galleryImages.length;
+    }
+    
+    // Créer les slides
+    galleryImages.forEach((image, index) => {
+        const slide = document.createElement('div');
+        slide.className = `carousel-slide ${index === 0 ? 'active' : ''}`;
+        slide.innerHTML = `
+            <img src="${image.src}" alt="${image.title}" loading="lazy">
+            <div class="carousel-overlay">
+                <h4>${image.title}</h4>
+                <p>${image.description}</p>
+            </div>
+        `;
+        track.appendChild(slide);
+        
+        // Créer les points
+        const dot = document.createElement('button');
+        dot.className = `carousel-dot ${index === 0 ? 'active' : ''}`;
+        dot.addEventListener('click', () => {
+            if (!isGalleryAnimating && index !== currentGallerySlide) {
+                goToGallerySlide(index);
+            }
+        });
+        dotsContainer.appendChild(dot);
+    });
+    
+    // Événements pour les boutons
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    if (prevBtn) prevBtn.addEventListener('click', () => {
+        if (!isGalleryAnimating) {
+            goToGallerySlide(currentGallerySlide - 1);
+        }
+    });
+    
+    if (nextBtn) nextBtn.addEventListener('click', () => {
+        if (!isGalleryAnimating) {
+            goToGallerySlide(currentGallerySlide + 1);
+        }
+    });
+    
+    // Mettre à jour le compteur
+    updateGalleryCounter();
+}
+
+function goToGallerySlide(index) {
+    if (isGalleryAnimating) return;
+    
+    isGalleryAnimating = true;
+    
+    const track = document.getElementById('carouselTrack');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = galleryImages.length;
+    
+    if (!track || dots.length === 0 || slides.length === 0) return;
+    
+    // Retirer la classe active de tous les slides
+    slides.forEach(slide => slide.classList.remove('active'));
+    
+    // Gérer le défilement circulaire
+    if (index >= totalSlides) {
+        currentGallerySlide = 0;
+    } else if (index < 0) {
+        currentGallerySlide = totalSlides - 1;
+    } else {
+        currentGallerySlide = index;
+    }
+    
+    // Déplacer le carrousel
+    track.style.transform = `translateX(-${currentGallerySlide * 100}%)`;
+    
+    // Ajouter la classe active au slide courant
+    setTimeout(() => {
+        slides[currentGallerySlide].classList.add('active');
+        isGalleryAnimating = false;
+    }, 100);
+    
+    // Mettre à jour les points actifs
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentGallerySlide);
+    });
+    
+    // Mettre à jour le compteur
+    updateGalleryCounter();
+    
+    // Réinitialiser le timer auto
+    resetAutoSlide();
+}
+
+function updateGalleryCounter() {
+    const currentSlideSpan = document.getElementById('currentSlide');
+    if (currentSlideSpan) {
+        currentSlideSpan.textContent = currentGallerySlide + 1;
+    }
+}
+
+// ===== CARROUSEL AVIS CLIENTS =====
+let currentTestimonialSlide = 0;
+let testimonialInterval;
+let isTestimonialAnimating = false;
+
+function initTestimonialsCarousel() {
+    const track = document.getElementById('testimonialsTrack');
+    const currentTestimonialSpan = document.getElementById('currentTestimonial');
+    const totalTestimonialsSpan = document.getElementById('totalTestimonials');
+    
+    if (!track) return;
+    
+    // Mettre à jour le compteur total
+    if (totalTestimonialsSpan) {
+        totalTestimonialsSpan.textContent = testimonials.length;
+    }
+    
+    // Créer les cartes d'avis
+    testimonials.forEach((testimonial, index) => {
+        const card = document.createElement('div');
+        card.className = `testimonial-card ${index === 0 ? 'active' : ''}`;
+        
+        // Générer les étoiles
+        let stars = '';
+        const fullStars = Math.floor(testimonial.rating);
+        const hasHalfStar = testimonial.rating % 1 !== 0;
+        
+        for (let i = 0; i < 5; i++) {
+            if (i < fullStars) {
+                stars += '<i class="fas fa-star"></i>';
+            } else if (i === fullStars && hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt"></i>';
+            } else {
+                stars += '<i class="far fa-star"></i>';
+            }
+        }
+        
+        card.innerHTML = `
+            <div class="testimonial-header">
+                <div class="client-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="client-info">
+                    <h4>${testimonial.name}</h4>
+                    <div class="client-rating">
+                        ${stars}
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-body">
+                <p>${testimonial.text}</p>
+            </div>
+            <div class="testimonial-footer">
+                <span><i class="fas fa-calendar-alt"></i> ${testimonial.date}</span>
+            </div>
+        `;
+        
+        track.appendChild(card);
+    });
+    
+    // Événements pour les boutons
+    const prevBtn = document.getElementById('prevTestimonial');
+    const nextBtn = document.getElementById('nextTestimonial');
+    
+    if (prevBtn) prevBtn.addEventListener('click', () => {
+        if (!isTestimonialAnimating) {
+            goToTestimonialSlide(currentTestimonialSlide - 1);
+        }
+    });
+    
+    if (nextBtn) nextBtn.addEventListener('click', () => {
+        if (!isTestimonialAnimating) {
+            goToTestimonialSlide(currentTestimonialSlide + 1);
+        }
+    });
+    
+    // Mettre à jour le compteur
+    updateTestimonialCounter();
+}
+
+function goToTestimonialSlide(index) {
+    if (isTestimonialAnimating) return;
+    
+    isTestimonialAnimating = true;
+    
+    const track = document.getElementById('testimonialsTrack');
+    const cards = document.querySelectorAll('.testimonial-card');
+    const totalSlides = testimonials.length;
+    
+    if (!track || cards.length === 0) return;
+    
+    // Retirer la classe active de toutes les cartes
+    cards.forEach(card => card.classList.remove('active'));
+    
+    // Gérer le défilement circulaire
+    if (index >= totalSlides) {
+        currentTestimonialSlide = 0;
+    } else if (index < 0) {
+        currentTestimonialSlide = totalSlides - 1;
+    } else {
+        currentTestimonialSlide = index;
+    }
+    
+    // Déplacer le carrousel
+    track.style.transform = `translateX(-${currentTestimonialSlide * 100}%)`;
+    
+    // Ajouter la classe active à la carte courante
+    setTimeout(() => {
+        cards[currentTestimonialSlide].classList.add('active');
+        isTestimonialAnimating = false;
+    }, 150);
+    
+    // Mettre à jour le compteur
+    updateTestimonialCounter();
+    
+    // Réinitialiser le timer auto
+    resetTestimonialAutoSlide();
+}
+
+function updateTestimonialCounter() {
+    const currentTestimonialSpan = document.getElementById('currentTestimonial');
+    if (currentTestimonialSpan) {
+        currentTestimonialSpan.textContent = currentTestimonialSlide + 1;
+    }
+}
+
+// ===== DÉFILEMENT AUTOMATIQUE LENT =====
+function startAutoSlide() {
+    galleryInterval = setInterval(() => {
+        if (!isGalleryAnimating) {
+            goToGallerySlide(currentGallerySlide + 1);
+        }
+    }, 8000); // 8 secondes au lieu de 5
+    
+    testimonialInterval = setInterval(() => {
+        if (!isTestimonialAnimating) {
+            goToTestimonialSlide(currentTestimonialSlide + 1);
+        }
+    }, 10000); // 10 secondes au lieu de 6
+}
+
+function resetAutoSlide() {
+    clearInterval(galleryInterval);
+    startAutoSlide();
+}
+
+function resetTestimonialAutoSlide() {
+    clearInterval(testimonialInterval);
+    startAutoSlide();
+}
+
+// ===== INITIALISATION =====
+function initCarousels() {
+    initGalleryCarousel();
+    initTestimonialsCarousel();
+    startAutoSlide();
+    
+    // Pause au survol
+    const carouselContainer = document.querySelector('.gallery-carousel');
+    const testimonialsCarousel = document.querySelector('.testimonials-carousel');
+    
+    if (carouselContainer) {
+        carouselContainer.addEventListener('mouseenter', () => {
+            clearInterval(galleryInterval);
+        });
+        carouselContainer.addEventListener('mouseleave', () => {
+            startAutoSlide();
+        });
+    }
+    
+    if (testimonialsCarousel) {
+        testimonialsCarousel.addEventListener('mouseenter', () => {
+            clearInterval(testimonialInterval);
+        });
+        testimonialsCarousel.addEventListener('mouseleave', () => {
+            startAutoSlide();
+        });
+    }
+}
+
+// Appeler initCarousels dans votre DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+    // ... votre code existant ...
+    
+    initCarousels();
+});
+    </script>
+</body>
+</html>
